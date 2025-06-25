@@ -113,7 +113,7 @@ app.get('/api/search', async (req, res) => {
 
 app.get('/', async (req, res) => {
     try {
-        res.json({"index":"weather app backend"});
+        res.send("weather app backend");
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
