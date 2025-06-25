@@ -9,7 +9,17 @@ const WEATHER_API_KEY = process.env.WEATHER_API_KEY;
 const WEATHER_API_BASE_URL = process.env.WEATHER_API_BASE_URL;
 
 app.use(cors({
-    origin: 'https://weather-app-frontend-snowy.vercel.app/',
+    origin: (origin, callback) => {
+        const allowedOrigins = [
+            'https://weather-app-frontend-snowy.vercel.app',
+            'http://localhost:5173' // Add local dev URL if needed
+        ];
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type']
 }));
