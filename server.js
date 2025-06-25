@@ -111,6 +111,14 @@ app.get('/api/search', async (req, res) => {
     }
 });
 
+app.get('/', async (req, res) => {
+    try {
+        res.json({"index":"weather app backend"});
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
 // Start server
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
