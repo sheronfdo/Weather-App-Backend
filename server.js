@@ -8,8 +8,11 @@ const PORT = process.env.PORT || 3000;
 const WEATHER_API_KEY = process.env.WEATHER_API_KEY;
 const WEATHER_API_BASE_URL = process.env.WEATHER_API_BASE_URL;
 
-// Middleware
-app.use(cors());
+app.use(cors({
+    origin: '*',
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type']
+}));
 app.use(express.json());
 
 // Helper function to make WeatherAPI requests
